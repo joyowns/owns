@@ -1,0 +1,27 @@
+{  
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "manifest_version": 2,
+  "name": "owns",
+  "version": "0.0.0.0",
+  "description":"omega point terminal",
+  "icons":{"16":"assets/icon_16.png","128":"assets/icon_128.png"},
+  
+  "author":"CanWeNotCare",
+  "minimum_chrome_version": "38",
+  "offline_enabled": true,
+  "permissions": [
+    "alarms",
+    "audioCapture",
+    "clipboardRead",
+    "clipboardWrite",
+    "fileSystem",
+    "idle",
+    "power",
+    "tts",
+    "webview"
+    ]
+}
