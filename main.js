@@ -224,7 +224,7 @@ var OM = function () {
             for(var squareindex=0;squareindex<pattern.length;squareindex++){
               squarenote = pattern[squareindex];
               squareosc = squarecontext.createOscillator();
-              squaregain = squarecontext.createGain();squaregain.gain.value=0.25;
+              squaregain = squarecontext.createGain();squaregain.gain.value=1/16;
               squareosc.type = "square";squareosc.connect(squaregain);
               squaregain.connect(squarecontext.destination);
               squareosc.frequency.value = notes[squarenote[0]];
