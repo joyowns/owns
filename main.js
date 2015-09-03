@@ -1,6 +1,6 @@
 
 var OM = function () {
-  
+  var bpm = 70;         //idk who cares
   var hitgain = 1;
   
   var anomaly = [[0,0],[0,0],[0,0],[0,0],[0,0]]; //[type][song][buffer]
@@ -53,13 +53,13 @@ var OM = function () {
                       [91,96,3],[86,99,3],[95,102,2],[98,104,3],[102,107,3],[91,110,2],[90,112,3],[86,115,3],[95,118,10]
                     ],
                     [                                     //pattern 1 - serenity
-                      [47,0,2],[35,2,1],[59,3,1],[54,6,1],[62,7,1],[66,9,1],[59,10,1],[62,12,2],[54,14,1],[59,15,1],
-                      [54,17,1],[66,18,1],[59,20,3],[54,23,1],[62,24,1],[54,25,1],[59,26,1],[47,28,3],[54,31,1],
+                      [47,0,2],[35,2,1],[59,3,1],[54,6,1],[62,7,1],[66,9,1],[59,10,2],[62,12,2],[54,14,1],[59,15,1],
+                      [54,17,1],[66,18,1],[59,20,3],[54,23,1],[62,24,1],[54,25,1],[59,26,1],[47,28,3],[47,31,1],
                       [47,32,1],[59,34,1],[50,36,4],[54,40,4],[59,44,1],[54,45,1],[47,46,1],
                       [54,48,3],[59,51,3],[62,54,4],[62,58,1],[62,59,1],[62,60,1],[62,61,1],
                       [64,64,1],[62,65,1],[61,66,1],[62,68,1],[61,69,1],[59,70,1],[61,72,1],[59,73,1],[57,74,1],[59,76,4],
                       [35,80,1],[47,81,3],[49,85,3],[50,89,3],[62,92,4],
-                      [55,96,3],[57,99,3],[59,102,2],[59,108,1],[59,109,1],[59,111,1],
+                      [55,96,3],[57,99,3],[59,102,5],[59,108,1],[59,109,1],[59,111,1],
                       [57,112,3],[59,115,3],[61,118,2],[61,122,1],[61,123,1],[61,124,1],[61,125,1]
                     ],
                   ],
@@ -80,7 +80,7 @@ var OM = function () {
   var samplesleft;   //drums left to render
   var drumvals= [//pitched percussion sounds
                                     //high,low,bend,fade
-                  [35,18,3,3],      //kickdrum
+                  [35,18,1,1],      //kickdrum
                   [42,23,2,2],      //lowtom
                   [47,30,1,1],      //midtom
                   [54,35,1/2,1/2],  //hitom
@@ -99,7 +99,6 @@ var OM = function () {
   var vcontext;          //HTML5 canvas
   var acontext;          //WebAudio context
   
-  var bpm = 140;         //idk who cares
   var steptime = 15/bpm; //sixteenth note length
   
   var nowtime;           //used by parallel hit renderers
@@ -225,8 +224,10 @@ var OM = function () {
             for(var squareindex=0;squareindex<pattern.length;squareindex++){
               squarenote = pattern[squareindex];
               squareosc = squarecontext.createOscillator();
-              squareosc.type = "square";squareosc.connect(squarecontext.destination);
-              squareosc.frequency.value = notes[squarenote[0]+12];
+              squaregain = squarecontext.createGain();squaregain.gain.value=0.25;
+              squareosc.type = "square";squareosc.connect(squaregain);
+              squaregain.connect(squarecontext.destination);
+              squareosc.frequency.value = notes[squarenote[0]];
               squareosc.start(steptime*squarenote[1]);
               squareosc.stop(steptime*(squarenote[1]+squarenote[2]));
             }
@@ -243,6 +244,12 @@ var OM = function () {
     var hitclip=acontext.createBufferSource();
     hitclip.buffer=sourceclip;
     var gain=acontext.createGain();gain.gain.value=hitgain;
+    var delay=acontext.createDelay(steptime*32);
+    var feedback=acontext.createGain();feedback.gain.value=1/3;
+    
+    delay.delayTime.value=(steptime*3);
+    hitclip.connect(delay);
+    delay.connect(feedback);feedback.connect(delay);delay.connect(acontext.destination);
     hitclip.connect(gain);gain.connect(acontext.destination);
     hitclip.start(hittime);
   };
@@ -255,14 +262,17 @@ var OM = function () {
   OM.playscene = function (eX){
     nowtime=acontext.currentTime;
     OM.hit(nowtime,anomaly[0][1]);
-    OM.hit(nowtime+64*steptime,anomaly[1][1]);
-    OM.hit(nowtime+96*steptime,anomaly[1][1]);
-    OM.hit(nowtime,anomaly[2][1]);
-    OM.hit(nowtime+(64*steptime),anomaly[2][1]);
+    OM.hit(nowtime+64*steptime,anomaly[0][1]);
+    //OM.hit(nowtime+96*steptime,anomaly[1][1]);
+    OM.hit(nowtime,anomaly[2][0]);
+    OM.hit(nowtime+(64*steptime),anomaly[2][0]);
+    OM.hit(nowtime,anomaly[3][1]);
+    OM.hit(nowtime,anomaly[2][0]);
+    OM.hit(nowtime+(64*steptime),anomaly[2][0]);
     OM.hit(nowtime,anomaly[3][1]);
     OM.hit(nowtime,anomaly[3][0]);
-    OM.hit(nowtime,anomaly[4][1]);
-    OM.hit(nowtime+(64*steptime),anomaly[4][1]);
+    //OM.hit(nowtime,anomaly[4][1]);
+    //OM.hit(nowtime+(64*steptime),anomaly[4][1]);
     
   };
   return OM;
