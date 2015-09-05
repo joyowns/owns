@@ -7,7 +7,7 @@
   "manifest_version": 2,
   "name": "owns",
   "version": "0.0.0.0",
-  "description":"omega point terminal",
+  "description":"omega point terminal. I have no idea what I'm working on, but I can certainly show you.",
   "icons":{"16":"assets/icon_16.png","128":"assets/icon_128.png"},
   
   "author":"CanWeNotCare",

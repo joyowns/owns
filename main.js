@@ -13,7 +13,7 @@ var OM = function () {
                       [8,16,3],[8,19,3],[9,22,2],[8,24,2],[9,26,2],[8,28,4]
                     ],
                     [                                     //pattern 1 - serenity
-                      [0,0,4],[0,4,4],[4,8,3],[4,11,3],[4,14,4],[0,18,3],[0,21,1],[0,22,2],[4,24,6],[4,30,1],[4,31,1],
+                      [0,0,4],[0,4,4],[4,8,3],[4,11,3],[4,14,4],[0,18,4],[0,22,2],[4,24,6],[4,30,1],[4,31,1],
                       [8,0,4],[8,4,2],[9,6,2],[8,8,8],[8,16,4],[8,20,2],[9,22,2],[8,24,8]
                     ]
                   ],
@@ -95,12 +95,12 @@ var OM = function () {
   var masterchannel;
   
   var delaytime = steptime*3;
-  var delaygain = 1/2;
+  var delaygain = 0/3;
   var delay;
   var feedback;
   
   var lowpassnote = 59;
-  var lowpassgain = 4;
+  var lowpassgain = 2;
   var lowpass;
   var lpgain;
   
@@ -113,13 +113,13 @@ var OM = function () {
   var waveform;
   var wavearray;
   var wavelength;
-  var wavefft=2048*16;
+  var wavefft=32768;
   var wavewidth=480.0;
   var waveheight=40.0*8;
   
   var dropexponent = 4;
   //findmixer
-  var loudsquares = [[1/8,1/8],[1/8,1/8],[1/16,1/24],[1/8,1/24],[0,1/8]];
+  var loudsquares = [[1/8,1/8],[1/8,1/8],[6/16,6/24],[5/12,0/16],[0,2/8]];
   var justdrums = [[1/4,1/4],[0/8,0/8],[0/12,0/16],[0/16,0/6],[0,0/8]];
   var drumnbass = [[0/8,0/8],[0/8,0/8],[0/12,0/16],[0/16,0/6],[0,2/8]];
   
@@ -127,13 +127,13 @@ var OM = function () {
   var anomalyshift = [
                         [0,0],    //DRUMBEAT
                         [0,0],    //DRUMFILL
-                        [-12,36],    //LEFTHAND
-                        [0,24],    //RIGHTHAND
-                        [12,24]     //BASSLINE
+                        [-24,36],    //LEFTHAND
+                        [-12,24],    //RIGHTHAND
+                        [12,12]     //BASSLINE
                       ];
   var drumvals= [//pitched percussion sounds
                                     //high,low,bend,fade
-                  [47,23,1/16,1/4,2],      //kickdrum
+                  [47,23,1/12,1,1],      //kickdrum
                   [42,23,2,2,0],      //lowtom
                   [47,30,1,1,0],      //midtom
                   [54,35,1/2,1/2,0],  //hitom
@@ -145,7 +145,7 @@ var OM = function () {
   var percvals= [//nonpitched percussion sounds
                                     //filter,fade
                   [35,1/2,1],         //snarenoise
-                  [83,1/16,2],        //closedhatnoise
+                  [95,1/32,2],        //closedhatnoise
                   [83,1/8,2]         //openhatnoise
                 ];
   
@@ -240,7 +240,7 @@ var OM = function () {
       var drumlow=notes[drumnode[1]];                                      //final pitch
       var drumbend=steptime * drumnode[2];                                 //pitchdown time
       var drumfade=steptime * drumnode[3];                                 //fadeout time
-      var drumcontext=new OfflineAudioContext(1,samplerate*drumfade*8,samplerate);    //spawn a buffer generator
+      var drumcontext=new OfflineAudioContext(1,samplerate*drumfade*16,samplerate);    //spawn a buffer generator
       var drumosc=drumcontext.createOscillator();                                     //spawn an oscillator
       var drumgain=drumcontext.createGain();                                          //spawn a volume node
       drumgain.gain.setValueAtTime(drumnode[4],0);                                              //set initial volume
@@ -395,6 +395,7 @@ var OM = function () {
   };
   return OM;
 }();
+var om;
 window.onload = function() {
-  var om = new OM();
+  om = new OM();
 };
