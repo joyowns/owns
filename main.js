@@ -1,23 +1,27 @@
 var height=320;var width=480;
-chrome.app.window.minWidth=width;
+/*chrome.app.window.minWidth=width;
 chrome.app.window.minHeight=height;
 chrome.app.window.maxWidth=width;
-chrome.app.window.maxHeight=height;
+chrome.app.window.maxHeight=height;*/
 var canvas = document.getElementById('canvas');
 var vc = canvas.getContext('2d');
 var ac = new window.AudioContext();
 var sr = ac.samplerate;
-var tempo=120;
+var tempo=140;
 var steptime = 15 / tempo;
 var stretch = tempo / 140;
+var transpose = 1;
 var factor = Math.pow(2,1/12);
+var pulseinterval;
 function settempo(x){
+  window.clearInterval(pulseinterval);
   tempo=x;steptime=15/tempo;
   stretch=tempo/140;
+  pulseinterval=window.setInterval(PULSE,steptime*1000);
 }
 var pulse = 0;
 var alt=false;
-vc.lineWidth=1;vc.font="20px mono";
+vc.lineWidth=1;vc.font="20px moono";
 function FBLACK(){vc.fillStyle='rgb(0,0,0)';}
 function SBLACK(){vc.strokeStyle='rgb(0,0,0)';}
 function SBLUE(){vc.strokeStyle='rgb(100,100,192)';}
@@ -39,7 +43,7 @@ var DECK = function (offset) {
 var upper = new DECK(0);
 var middle = new DECK(105);
 var lower = new DECK(215);
-
+var keyval = 0;
 var selected = upper;
 DECK.prototype.draw = function() {
   if(selected===this){FPULSE();SBLACK();}
@@ -48,10 +52,11 @@ DECK.prototype.draw = function() {
   if(selected===this){FBLACK();SBLACK();}
   else{FBLUE();SBLUE();}
   vc.strokeText(this.title,20,this.offset+25);
-  vc.strokeText("#/b " + this.transpose,
+  vc.strokeText("#/b " + transpose,
                 20,this.offset+50);
   vc.strokeText("<--> " + stretch,
                 20,this.offset+70);
+  //vc.strokeText("key:"+keyval,360,this.offset+50);
 };
 DECK.prototype.playstep = function(now){
   var step = ac.createBufferSource();
@@ -67,12 +72,11 @@ DECK.prototype.playstep = function(now){
   step.loopStart=buffertime+steptime;
   step.loopEnd=buffertime+2*steptime;
   step.connect(gain);gain.connect(ac.destination);
-  step.playbackRate.value=this.transpose;
+  step.playbackRate.value=transpose;
   step.start(now,
             buffertime,
             steptime*2);
   this.position+=steptime*stretch;
-  //if(pulse===2)this.position+=steptime*stretch;
 };
 DECK.prototype.open = function(){
   var local = this;
@@ -111,8 +115,8 @@ var PULSE = function(){
   pulse--;if(pulse<0)pulse=3;
 };
 var PITCH = function(){
-  if(alt)selected.transpose/=factor;
-  else selected.transpose*=factor;
+  if(alt)transpose/=factor;
+  else transpose*=factor;
 };
 var STRETCH = function(){
   if(alt)settempo(tempo-1);
@@ -123,16 +127,20 @@ var DRAW = function(){
   FBLACK();vc.fillRect(0,0,width,height);
   upper.draw();middle.draw();lower.draw();
 };
-
+var DROPIT = function(){
+  selected.position=600;
+};
 window.addEventListener("keydown",function(event){
   if(event.defaultPrevented)return;
-  if(event.keyCode==9)selected=upper;
-  if(event.keyCode==16)selected=middle;
-  if(event.keyCode==17)selected=lower;
+  if(event.keyCode==9){selected=upper;upper.position=0;}
+  if(event.keyCode==16){selected=middle;middle.position=0;}
+  if(event.keyCode==17){selected=lower;lower.position=0;}
   if(event.keyCode==18)alt=true;
   if(event.keyCode==66)STRETCH();//b for beat
   if(event.keyCode==78)PITCH();//n for note
   if(event.keyCode==79)selected.open();
+  if(event.keyCode==80)DROPIT();
+  keyval = event.KeyCode;
   console.log(event.keyCode + " down, ");
   });
 window.addEventListener("keyup",function(event){
@@ -141,4 +149,4 @@ window.addEventListener("keyup",function(event){
   //console.log(event.keyCode + " up, ");
   });
 window.onload = DRAW;
-window.setInterval(PULSE,steptime*1000);
+pulseinterval = window.setInterval(PULSE,steptime*1000);
