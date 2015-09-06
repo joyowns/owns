@@ -7,10 +7,16 @@ var canvas = document.getElementById('canvas');
 var vc = canvas.getContext('2d');
 var ac = new window.AudioContext();
 var sr = ac.samplerate;
-var steptime = 15 / (720/7);
+var tempo=120;
+var steptime = 15 / tempo;
+var stretch = tempo / 140;
+var factor = Math.pow(2,1/12);
+function settempo(x){
+  tempo=x;steptime=15/tempo;
+  stretch=tempo/140;
+}
 var pulse = 0;
 var alt=false;
-var factor = 1/32;
 vc.lineWidth=1;vc.font="20px mono";
 function FBLACK(){vc.fillStyle='rgb(0,0,0)';}
 function SBLACK(){vc.strokeStyle='rgb(0,0,0)';}
@@ -24,7 +30,7 @@ function FPULSE(){
 
 var DECK = function (offset) {
   this.offset = offset;this.play=false;
-  this.stretch = 1; this.transpose = 1;
+  this.transpose = 1;
   this.buffer = null;this.file = null;
   this.selected = false;this.ready=false;
   this.title = "no track loaded";
@@ -44,15 +50,13 @@ DECK.prototype.draw = function() {
   vc.strokeText(this.title,20,this.offset+25);
   vc.strokeText("#/b " + this.transpose,
                 20,this.offset+50);
-  vc.strokeText("<--> " + this.stretch,
+  vc.strokeText("<--> " + stretch,
                 20,this.offset+70);
-  vc.strokeText("@ " + this.position,
-                20,this.offset+95);
 };
 DECK.prototype.playstep = function(now){
   var step = ac.createBufferSource();
   var gain = ac.createGain();
-  var buffertime=this.position*this.stretch;
+  var buffertime=this.position*stretch;
   gain.gain.setValueAtTime(0.0001,now);
   gain.gain.linearRampToValueAtTime(1.0,
               now+steptime);
@@ -67,7 +71,7 @@ DECK.prototype.playstep = function(now){
   step.start(now,
             buffertime,
             steptime*2);
-  this.position+=steptime*this.stretch;
+  this.position+=steptime*stretch;
 };
 DECK.prototype.open = function(){
   var local = this;
@@ -88,9 +92,8 @@ DECK.prototype.open = function(){
                   local.title=entry.name;
                   local.buffer=buffer;
                   local.play=true;
-                  local.stretch=6/7;
-                  local.transpose=6/7;
-                  local.position=steplength*6/7;
+                  local.transpose=1;
+                  local.position=0;
                   local.duration=(buffer.length)/sr;
                   pulse=3;
                 },
@@ -104,25 +107,20 @@ var PULSE = function(){
   if(upper.play)upper.playstep(now);
   if(middle.play)middle.playstep(now);
   if(lower.play)lower.playstep(now);
-  pulse--;if(pulse<0)pulse=2;
-  if(pulse==2){
-    if(upper.play)upper.position+=steptime*upper.stretch;
-    if(middle.play)middle.position+=steptime*middle.stretch;
-    if(lower.play)lower.positio+=steptime*lower.stretch;
-  }
+  pulse--;if(pulse<0)pulse=3;
 };
 var PITCH = function(){
-  if(alt)selected.transpose/=(1+factor);
-  else selected.transpose*=(1+factor);
-};
-var STRETCH = function(){
-  if(alt)selected.stretch/=(1+factor);
-  else selected.stretch*=(1+factor);
+  if(alt)selected.transpose/=factor;
+  else selected.transpose*=factor;
 };
 var NUDGE = function(){
   if(alt)selected.position-=steptime*selected.stretch;
   else selected.position+=steptime*selected.stretch;
   if(selected.position<0)selected.position=0;
+};
+var STRETCH = function(){
+  if(alt)settempo(tempo-1);
+  else settempo(tempo+1);
 };
 var DRAW = function(){
   requestAnimationFrame(DRAW);
