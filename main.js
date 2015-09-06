@@ -72,6 +72,7 @@ DECK.prototype.playstep = function(now){
             buffertime,
             steptime*2);
   this.position+=steptime*stretch;
+  //if(pulse===2)this.position+=steptime*stretch;
 };
 DECK.prototype.open = function(){
   var local = this;
@@ -113,11 +114,6 @@ var PITCH = function(){
   if(alt)selected.transpose/=factor;
   else selected.transpose*=factor;
 };
-var NUDGE = function(){
-  if(alt)selected.position-=steptime*selected.stretch;
-  else selected.position+=steptime*selected.stretch;
-  if(selected.position<0)selected.position=0;
-};
 var STRETCH = function(){
   if(alt)settempo(tempo-1);
   else settempo(tempo+1);
@@ -136,7 +132,6 @@ window.addEventListener("keydown",function(event){
   if(event.keyCode==18)alt=true;
   if(event.keyCode==66)STRETCH();//b for beat
   if(event.keyCode==78)PITCH();//n for note
-  if(event.keyCode==86)NUDGE();//v for vendetta
   if(event.keyCode==79)selected.open();
   console.log(event.keyCode + " down, ");
   });
