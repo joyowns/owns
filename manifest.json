@@ -1,4 +1,4 @@
-{  
+  {  
   "app": {
     "background": {
       "scripts": ["background.js"]
@@ -18,7 +18,7 @@
     "audioCapture",
     "clipboardRead",
     "clipboardWrite",
-    "fileSystem",
+    {"fileSystem":["write"]},
     "idle",
     "power",
     "tts",

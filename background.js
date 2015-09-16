@@ -3,8 +3,9 @@ chrome.app.runtime.onLaunched.addListener(function(launchData) {
     'index.html',
     {
       id: 'mainWindow',
-      bounds: {width: 480, height: 320}
+      bounds: {width: 960, height: 640}
     }
   );
   chrome.power.requestKeepAwake("system");
 });
+
