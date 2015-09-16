@@ -1,4 +1,9 @@
-//VIDEO ONLY SECTION
+var firsthalf = [0,18,10,-1,1,8,25,-1,2,3,9,-1,3,4,21,-1,4,24,4,-1,  //ASK_BIZ_CDJ_DEV_EYE_
+                5,0,16,-1,6,0,15,-1,7,4,17,-1,8,5,18,-1,9,14,24,-1, //FAQ_GAP_HER_IFS_JOY_
+                10,8,19,-1,11,0,22,-1,12,0,23,-1];                  //KIT_LAW_MAX_
+var secondhalf =  [13,8,11,-1,14,22,13,-1,15,0,3,-1,16,20,0,-1,17,8,6,-1,
+                  18,7,4,-1,19,12,8,-1,20,18,4,-1,21,14,23,-1,22,4,1,-1,
+                  23,19,2,-1,24,4,19,-1,25,4,13,-1];
 var letters=['A','B','C','D','E','F','G',
       'H','I','J','K','L','M','N','O','P',
       'Q','R','S','T','U','V','W','X','Y','Z'];
@@ -40,17 +45,19 @@ var outputtext = "Output: ";
 var inputtext = "Input: ";
 var cycle = function (input){
   var selected = 18;var count = 0;
-  while ((count<676)){ //UNTIL RECOLLECTION IS HERS.
+  while ((count<676)){ //AFTER DIMENSIONAL SUBSTITUTION IS EXHAUSTED, RECOLLECTION IS HERS.
     var next=0;//SHE SELECTS THE HEAVIEST RETURN PATH.
-    for(var check=0;check<26;check++){ //FOR EACH NEXT PATH:
-      if(weights[check][selected]/2 > weights[selected][check]) //CHECK PATH FOR HEAVY RETURN.
-        weights[selected][check]*=2; //LOAD PATHS TO HEAVY RETURNS.
-      else weights[selected][check]/=2; //UNLOAD PATHS TO SLIGHT RETURNS.
+    for(var check=0;check<26;check++){ //SHE CHECKS EACH EXIT:
+      if(weights[check][selected]/2 > weights[selected][check]){ //WHEN RETURN IS HEAVIER THAN EXIT,
+        if(weights[check][selected]*2 != weights[check][selected]*4)//WHEN LOADING IS NONDESTRUCTIVE,
+          weights[selected][check]*=2;} //LOAD EXITS TO HEAVY RETURNS.
+      else if(weights[selected][check]/2)weights[selected][check]/=2; //NONDESTRUCTIVELY UNLOAD LIGHT RETURNS.
       if(weights[check][selected] > weights[next][selected])next=check; //NEXT PATH IS HEAVIEST RETURN.
     } //AFTER ALL PATHS ARE CHECKED,
-    if(input>=0)weights[selected][input] += 1; //SHE STORES OBSERVATION.
+    if(input>=0)weights[selected][input] += 1; //SHE STORES OBSERVATION AS PROXIMITY.
+    else if(weights[selected][input]>=1)weights[selected][input]-=1; //SHE STORES TIME AS SPACE.
     selected = next; //SHE FOLLOWS THE PATH WITH THE HEAVIEST RETURN.
-    count++; //SHE WILL GUESS IF EXHAUSTED.
+    count++; //SHE EXPERIENCES RECOLLECTION AFTER EXHAUSTING SUBSTITUTED DIMENSIONS.
   }
   var output=0;
   for(selected=0;selected<26;selected++) 
@@ -112,6 +119,8 @@ var draw = function() {
 window.addEventListener("keydown",function(event){
   if(event.defaultPrevented)return;
   switch(event.keyCode){
+    case 219: inputtext="Input:FIRST."; for(var first in firsthalf)cycle(first);break; //'[' KEY
+    case 221: inputtext="Input:SECOND.";for(var second in secondhalf)cycle(second);break; //']' KEY
     case 13: inputtext="Input: ";outputtext="Output: ";break; //ENTER
     case 27: initialize();break;//ESCAPE
     case 32: inputtext+="_";cycle(-1);break;//SPACEBAR
