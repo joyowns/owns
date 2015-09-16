@@ -39,7 +39,6 @@ var initialize = function() {
   [0.5,0.5,1.0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,2.0,0.5,0.5,0.5,4.0,0.5,0.5],//X
   [0.5,0.5,0.5,0.5,2.0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1.0,0.5,0.5,0.5,0.5,4.0,0.5],//Y
   [0.5,0.5,0.5,0.5,2.0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1.0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,4.0]];//Z
-  
 };
 var outputtext = "Output: ";
 var inputtext = "Input: ";
@@ -88,7 +87,6 @@ resize = function (){
   hstep = Math.floor(height / 29);
   vc.font=""+(hstep-2)+"px mono";
 };
-
 var draw = function() {
   requestAnimationFrame(draw);
   fill(0);vc.fillRect(0,0,width,height);
@@ -112,10 +110,7 @@ var draw = function() {
   vc.strokeText(codetext,0,height-(hstep/2));
   vc.strokeText(inputtext,0,height-(hstep*1.5));
   vc.strokeText(outputtext,width/2,height-(hstep*1.5));
-
-  
 };
-  
 window.addEventListener("keydown",function(event){
   if(event.defaultPrevented)return;
   switch(event.keyCode){
@@ -150,12 +145,6 @@ window.addEventListener("keydown",function(event){
     case 88: inputtext+="X";cycle(23);break;
     case 89: inputtext+="Y";cycle(24);break;
     case 90: inputtext+="Z";cycle(25);break;
-    default: {
-      codetext = "code: " + event.keyCode;
-      break;
-    }
-  }
-});
+    default: codetext = "code: " + event.keyCode;break;}});
 window.addEventListener("resize",resize);
-
 window.onload = function () {initialize();draw();};
