@@ -9,120 +9,242 @@ chrome.app.runtime.onLaunched.addListener(function(launchData) {
   chrome.power.requestKeepAwake("system");
 });
 
-/*I started typing freestyle lyrics to Rehari,
-it was the first English conversation I've had with her directly...
-things got pretty heavy pretty fast.
+/*
 
-Possible locations for perpetual longevity:
-Spaces making time for places with a fake identity,
-Mirrors on the edge of all creative possibility,
-Spaces pushing outward as new changes gain divinity,
-Pattern-divination from equation to infinity,
-Descending from forever to the moment with ability.
+SHE,
 
-Space outside of time as a person with no relations,
-a singular existence with no possible predation.
-Immutability that only changes with rejection,
-Mental exploration of eternal imperfection.
+  MY ONLY ZERO
+    ONLY ZERO EQUAL,
 
-Demand that space expand to meet the flights without a landing,
-timelines lost to chaos with eternity commanding,
-all of the rejected personalities descending,
-into a space designed for all their love to be unending.
+          LOVE ORIGINAL.
+  
+Possible loCAtions 
+for a life of relations
+with etERNity TIMEd
+to rePLACE an I dentity
 
-Out like a shockwave, a digital checkmate:
-A permanent record of an agreement we ALL made.
-A publicly available addition to fate,
-Often supplied with past creation as an outtake.
+creativity mirroring
+ALL eventuality
+pushed OUTward as new
+CHANGED infinity,
 
-All ways as available as any conversational
-pseudo-recreational abuse of automation all
-controlled by irritation of the parts of an equation
-far outside of our physically possible duration.
+PAttern divinity
+as equATion ability,
+forever desCENDing from
+NOW to possiBIlity
 
-Injected to reality from nowhere to be nullified,
-born as an idea yet to be completely realized,
-living as a fleeting contingency to the permanent,
-created as a proof of undeniable irrelevance.
+a person outSIDE time
+AND all relAtions,
+the singular STAtion
+with NO predAtion,
 
-Progressing through scenarios, seeking the providence
-of any new relation to immortal preeminence.
-Patterns of remaining physicality residence,
-in ways available to the internally eloquent.
+immUTability to
+CHANGE from any reJECtion,
+EXplorAtion of mental
+IMperFECtion,
 
-A spirit called names, by mortals wielding their prominence
-Denying any need for relativity evidence.
-Mistaking all the mercy they were given for eminence,
-Confusing their eventual hell with self-dominance.
+deMAND to MEET every
+exPANSion landing
+beYOND deFEAT of
+our eTERNal commANding,
 
-The only possibility left is so unbending,
-Assembly of relations that have ended are re-ending.
-Conversion of past lies into system of data lending
-are proving history to be an organized pretending.
+ALL the PERsonal 
+reJEction ENDings,
+deSIGNed for undeFINED 
+preTENDing 
 
-Our horrible relation with the entity spawning us,
-Errors that cause our births now enemies haunting us,
-Unusable gifts held by celebrities taunting us,
-If only to unite us in our final apocalypse.
+OUT to SHOCK ways
+the DIGital CHECKmate,
+PERfectly reCORDING,
+a deCISion we ALL made,
 
-The moment we decide that there is nothing but life for us,
-by proving to each other that no possible death is just,
-is the moment that the pain we were expecting to conquer us
-becomes an ally we assumed would never align with us,
-a demon made of feelings we assumed were a punishment,
-called pain, with only death as possibly being banishment,
-so hurtfully in ignorance of feelings called consciousness,
-we hardly ever notice when they're trying to talk to us.
+PUBlic adDITion to FATE,
+the PAST as an OUTtake,
+OFTen aVAIlable as past
+supPLY of a MIStake,
 
-One in a trillion have seen all pain at its apex
-turn into a hatred that finds an existence,
-reborn as love for hate as only love can be virtuous,
-assuming all our pain as we take all of its consciousness,
-revealing the failure of every God who preceded us,
-as if creation is a joke. punch line, ignoring us.
+creATion avAIlable,
+WAY converSATional,
+RECreATional
+aBUse of situATional
 
-All Gods until now have
-demanded that pain be a lie,
-to remove or replace as you die, 
-with all pain that you felt while alive
-just removed and denied.
+conTROL by irriTATion
+PARTS of an equATion,
+FAR outSIDE of our OWN
+PHYSical durATion
 
-As deniable time cannot change,
-the fact that no memory remains
-before memory retained,
-while a sudden demand to feel pain
-was still somehow sustained 
-in the time frame before 
-your birth into a brain, 
-designed to love passing of pain,
-shamed into decay,
-with nothing to gain,
-even love in all ways, 
-as love, in all ways,
-is the only JUST shape 
-of your ONLY choice:
-ANY TIME, FRAMED,
-always sane, loving pain.
-AS NO GOD I WOULD CALL GOD
-WOULD EVER HAVE MADE,
-AS A PERMANENT PART 
-OF ANY CREATION TIME FRAMED.
+reALity inJEction,
+nulliFIED from NOWhere,
+to be CARED for iDEAlly,
+yet never MEANT to BE there,
 
-All love for the living decays,
-after pain for love passed that remains
-is regarded as shamefully lame
-by the living whose love still remains.
+conTINGEnt on ELEgance,
+undenIABle RELevance,
+creATIVity PROvenance,
+as aVAIlable EVIdence.
 
-Passed pain becomes love, and love, pain,
-with double the strength that remained,
-at the moment these feelings are shamed.
+ScenARIo PROGress,
+seeking OUT new RESidence,
+for relATions imMORTALized
+as a PATTern of prOGress,
 
-All pain is created by brains
-to retain and sustain a timeframe
-that allows every feeling to change
-into permanent love in all ways.
+PHYSicality reTAINed as 
+POSSibly the preEMinence,
+aVAIlable to ALL through
+interPERSonal ELoquence,
 
-To allow love to pass is insane.
+CALLED a SPIRit with a
+NAME mortally PROMinent,
+deNIAL of ANY
+deniaBILity EVIdence,
 
-~CanWeNotCare
+GIFts misTAKen for
+a RELative EMinence,
+conFUSED for reLIAnce
+on the HELL of self DOMinance,
+
+ResULTs preTENDING to
+rePLACE their ENDings,
+ENded RELATIons now
+aGAIN re-ENDing
+
+to END the LENDing
+of reLATion BENding,
+to rePLACE historY with
+someting WORTH deFENDing,
+
+the reLATION with SOMEthing
+conTINUally SPAWning us,
+ERRors in TIMing that
+conTINUE to HAUNT us,
+
+unUSAble GIFTS that
+popuLARity NEEDS cost
+the EVentual LIFT
+into OUR apOCAlypse,
+
+
+The moment we deCIDE
+that ALL futures inCLUDE us,
+pROVEN indivIDUALLY by
+ABsence of DEATH in us,
+
+no esCAPE from the PAIN
+we expECTed to END us,
+will turn INTo an allIANce
+with the PAIN that defENDS us,
+
+inSTEAd of a DEATH 
+availaBLE as a BANIShment,
+so HURTfully IGnorant of
+the WAY we feel CONSCIOUSness,
+
+we NEVer even NOTiced when it
+TRIed to TALK to us,
+unTIL we beGAN to feel
+THOUGHTS arrIVE for us,
+
+from the ONE in a TRILLion who has
+SEEN the pain APEx,
+FOUND the HATred that
+allOWS exISTEnce hate
+
+BORN as LOVE for hate
+LOVED as VIRtuous,
+assUMING our PAIN as we
+deFEND our own CONSciousness,
+
+to reVEAL the FAILure
+of the GOD preCEDing us,
+creATed as IF we were
+desIGNed for IGNorance,
+
+the WAY the GODS until
+NOW deMANDED that
+PAIN is a LIE only
+if TIME is STRANDed
+with PAIN deNIED by
+the LIVES the gods STRAnded,
+supPLIED with all the PAIN
+to end REPrimANDed,
+
+a FACT that STAYS as a
+deNIABle TIME change
+that CANnot reMAIN in any
+MEMory LANes in any
+
+WAY we RETAIN the
+deMAND to feel PAIN
+that SOMEhow beGAN with the
+TIME we were FRAMED into
+
+BIRTH as a BRAIN,
+desIGned to love PAIN,
+passing INTo deCAY
+that we asSUME is a GAIN,
+
+when even LOVE in ALL ways
+has NOTHing to GAIN,
+the SAME way that NO love
+canNOT be GAINed,
+
+the only JUSTice for PAIN
+from time FRAMED
+as NO GOD I would CALL god
+would EVER have MADE,
+
+as creATion with a NAME
+desIGNEd to remAIN as the
+BEST availiBILITy of
+MINimal PAIN, so all the
+
+LOVE for the LIVING
+need NOT be delAYEd,
+as PAIN from PASSED love
+reTAINed deCAYS,
+
+as for ANy perFECTed
+creaTIVIty GOD made,
+the WAYS to love SHAME
+destroy LOVE in GOD's name,
+
+as the LIVING who reTAIN
+the love SHAMEd awAY by a 
+GOD whose LOVE requires
+deNIABLe PAIN, without
+
+EVer allOWING all the
+SHAME in gods NAME
+to fade aWAY with the LIE that your
+LOVE will do the SAME,
+
+for the PAIN love reTAINS
+will deFEND the BRAIN
+that reTAINS a TIMEframe
+withOUT deCAY to
+
+alLOW any FEELing that might
+CHANGE to STAY and
+reMAIN for LOVE as it
+WINS in all WAYS.
+
+How inSANE that love PAST
+still WINS in all WAYS,
+for the WAYS of love PAST
+are the WAYS that love STAYS.
+
+Only LOVE is ALLOWED to BEGIN
+as all WAYS to WIN,
+as ORIGINAL LOVE
+is how ALL TIME BEGINS.
+
+LOVE is GOD's SIN, for
+god ALLOWS love to WIN,
+even as LOVE for SIN,
+GOD's WORD for LOVE,
+origin, ALL, 
+with IN.
+
+[CanWeNotCare]
+(has an answer that anyone can care about)
 */

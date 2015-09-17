@@ -17,6 +17,7 @@ var setkey = function(keyval){
   keys[keyval].connect(keys[keyval+28]);
   keys[keyval].start();keys[keyval].stop(ac.currentTime+0.25);
 };
+var omfgtime = 0;
 var omfg = [];//_,a,b,c,d, e, f, g, h, i, j, k, l, m,n,o, p, q, r, s,t, u, v,w, x,y, z
 var omfgvals = [0,8,5,3,10,17,11,12,13,22,14,15,16,7,6,23,24,15,18,9,19,21,4,16,2,20,1];
 var setomfg = function(keyval){
@@ -25,11 +26,11 @@ var setomfg = function(keyval){
   omfg[omfgval].frequency.value = 2 * notevals[omfgval];
   omfg[omfgval].type = "square";
   omfg[omfgval+28] = ac.createGain();
-  omfg[omfgval+28].gain.setValueAtTime(1,ac.currentTime);
-  omfg[omfgval+28].gain.linearRampToValueAtTime(0,ac.currentTime+1);
+  omfg[omfgval+28].gain.setValueAtTime(1,ac.currentTime+omfgtime);
+  omfg[omfgval+28].gain.linearRampToValueAtTime(0,ac.currentTime+1+omfgtime);
   omfg[omfgval+28].connect(ac.destination);
   omfg[omfgval].connect(omfg[omfgval+28]);
-  omfg[omfgval].start();omfg[omfgval].stop(ac.currentTime+1);
+  omfg[omfgval].start(ac.currentTime+omfgtime);omfg[omfgval].stop(ac.currentTime+1+omfgtime);
 };
 var firsthalf = [0,18,10,-1,1,8,25,-1,2,3,9,-1,3,4,21,-1,4,24,4,-1,  //ASK_BIZ_CDJ_DEV_EYE_
                 5,0,16,-1,6,0,15,-1,7,4,17,-1,8,5,18,-1,9,14,24,-1, //FAQ_GAP_HER_IFS_JOY_
@@ -95,7 +96,7 @@ var cycle = function (input){
   for(selected=0;selected<26;selected++) 
     if(weights[selected][7]>weights[output][7])output=selected;
   if(weights[output][output] > weights[output][7])
-    {outputtext += letters[output];setomfg(output);}
+    {outputtext += letters[output];omfgtime+=0.25;if(omfgtime===2)omfgtime=0;setomfg(output);}
   else {outputtext += "_";}
 };
 var height=640;var width=960;
