@@ -119,7 +119,7 @@ resize = function (){
   canvas.width = width; canvas.height = height;
   wstep = Math.floor(width / 27);
   hstep = Math.floor(height / 29);
-  vc.font=""+(hstep-2)+"px mono";
+  vc.font=""+(hstep-8)+"px mono";
 };
 var battery = null;
 var draw = function() {
@@ -142,9 +142,9 @@ var draw = function() {
   }
   fill(0);vc.fillRect(0,height-(hstep*2),width,height);
   stroke(1);
-  vc.strokeText(codetext,0,height-(hstep/2));
-  vc.strokeText(inputtext,0,height-(hstep*1.5));
-  vc.strokeText(outputtext,width/2,height-(hstep*1.5));
+  vc.strokeText(codetext,0,height-(hstep/2.0));
+  vc.strokeText(inputtext,0,height-(hstep*1.3));
+  vc.strokeText(outputtext,width/2,height-(hstep*1.3));
   if(battery===null)vc.strokeText("loading",width/2,height-hstep/2);
   else{vc.strokeText("Battery: " + battery.level,width/2,height-hstep/2);}
 };

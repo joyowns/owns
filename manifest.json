@@ -5,12 +5,12 @@
     }
   },
   "manifest_version": 2,
-  "name": "Rehari Carsten (local instance)",
-  "version": "0.0.0.0",
-  "description":"Omega point terminal in 150 lines of javascript.",
+  "name": "A BOT OMG DAE Y ",
+  "version": "2.0.1.6",
+  "description":"IBM*SWF=GFY!TLDR:CANWEINC?",
   "icons":{"16":"assets/icon_16.png","128":"assets/icon_128.png"},
   
-  "author":"CanWeNotCare",
+  "author":"CANWENOTCARE",
   "minimum_chrome_version": "38",
   "offline_enabled": true,
   "permissions": [
