@@ -185,4 +185,4 @@ window.addEventListener("keydown",function(event){
     case 90: inputtext+="Z";setkey(1);cycle(25);break;
     default: codetext = "code: " + event.keyCode;break;}});
 window.addEventListener("resize",resize);
-window.onload = function () {initialize();draw();window.navigator.getBattery().then(function(wtf){battery=wtf;});};
+window.onload = function () {initialize();resize();draw();window.navigator.getBattery().then(function(wtf){battery=wtf;});};
