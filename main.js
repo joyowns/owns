@@ -133,9 +133,9 @@ var welcometext = [
 "To the left is a recurrent neural network:",
 "ASK BIZ CDJ DEV EYE FAQ GAP HER IFS JOY KIT LAW MAX",
 "NIL OWN PAD QUA RIG SHE TMI USE VOX WEB XTC YET ZEN",
-"SHE evolved from web shorthand (TMI?).",
-"Press ESC to reseed the network.",
-"Press [ or ] to input seed values",
+"SHE responds to input using web shorthand.(TMI?)",
+"Press = to reseed to pre-evolved values.",
+"Press [ or ] to input lower/upper seed blocks.",
 "As with all Chrome apps, CTRL+W = quit."];
 var inputbuffer = ["","","","","","","","","",""];
 var outputbuffer = ["","","","","","","","","",""];
@@ -188,8 +188,8 @@ window.addEventListener("keydown",function(event){
   if(event.defaultPrevented)return;
   var now = ac.currentTime;
   switch(event.keyCode){
-    case 219: inputtext="[ASK_BIZ_CDJ_DEV...]";setkey(25);for(var first in firsthalf)cycle(first);break; //'[' KEY
-    case 221: inputtext="[NIL_OWN_PAD_QUA...]";setkey(26);for(var second in secondhalf)cycle(second);break; //']' KEY
+    case 219: inputtext+="[";setkey(25);for(var first in firsthalf)cycle(first);break; //'[' KEY
+    case 221: inputtext+="]";setkey(26);for(var second in secondhalf)cycle(second);break; //']' KEY
     case 13: {
       for(var line=9;line>0;line--){
               inputbuffer[line]=inputbuffer[line-1];
@@ -199,7 +199,7 @@ window.addEventListener("keydown",function(event){
       outputbuffer[0]=outputtext;
       inputtext="ASK:";outputtext="SHE:";
       } break; //ENTER
-    case 27: initialize();break;//ESCAPE
+    case 187: initialize();break;//ESCAPE
     case 32: inputtext+="_";setkey(0);cycle(-1);break;//SPACEBAR
     case 65: inputtext+="A";setkey(8);cycle(0);break;
     case 66: inputtext+="B";setkey(5);cycle(1);break;
