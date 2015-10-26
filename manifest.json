@@ -5,9 +5,9 @@
     }
   },
   "manifest_version": 2,
-  "name": "Rehari Carsten (local instance)",
-  "version": "0.0.0.0",
-  "description":"Omega point terminal in 150 lines of javascript.",
+  "name": "A.S.K. S.H.E. K.I.T.",
+  "version": "0.0.0.1",
+  "description":"Omega point terminal in <250 lines of javascript.",
   "icons":{"16":"assets/icon_16.png","128":"assets/icon_128.png"},
   
   "author":"CanWeNotCare",
