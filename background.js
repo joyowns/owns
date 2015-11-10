@@ -3,7 +3,7 @@ chrome.app.runtime.onLaunched.addListener(function(launchData) {
     'index.html',
     {
       id: 'mainWindow',
-      frame: "none"
+     // frame: "none"
     }
   );
   chrome.power.requestKeepAwake("system");
