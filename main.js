@@ -196,10 +196,11 @@ window.addEventListener("keydown",function(event){
         }
       }
       if(gap==". "){outputtext=outputtext.trim();outputtext+="!";}
-      for(var line=39;line>0;line--){
-              outputbuffer[line]=outputbuffer[line-1];
+      for(var line=39;line>1;line--){
+              outputbuffer[line]=outputbuffer[line-2];
       }
-      outputbuffer[0]=outputtext;
+      outputbuffer[0]=inputtext;
+      outputbuffer[1]=outputtext;
       inputtext="";outputtext="";
       } break; //ENTER
     case 187: initialize();break;//EQUALS
